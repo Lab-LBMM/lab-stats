@@ -1,17 +1,18 @@
-9	alunos desistentem
-10	alunos ativos
-3	bolsas FAPESP solicitadas
-0	bolsas CNPq solicitadas
-1	bolsas FAPESP aprovadas
-0	bolsas CNPq aprovadas
-8	bolsas Auxílios FAPESP disponíveis
-8	bolsas Auxílios FAPESP vigentes
-0	artigos submetidos
-0	artigos aceitos
-0	artigos negados
-2	participação em eventos
-2	apresentação de trabalhos
-0	minicurso ministrado
-1	churrasco
-1	disciplina pós-graduação
-0	disciplina graduação
+amount,categories
+9,alunos desistentes
+10,alunos ativos
+3,bolsas FAPESP solicitadas
+0,bolsas CNPq solicitadas
+1,bolsas FAPESP aprovadas
+0,bolsas CNPq aprovadas
+8,bolsas Auxílios FAPESP disponíveis
+8,bolsas Auxílios FAPESP vigentes
+0,artigos submetidos
+0,artigos aceitos
+0,artigos negados
+2,participação em eventos
+2,apresentação de trabalhos
+0,minicurso ministrado
+1,churrasco
+1,disciplina pós-graduação
+0,disciplina graduação

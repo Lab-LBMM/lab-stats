@@ -38,7 +38,7 @@ df_clean = df.dropna()
 if args.grafico:
     gname = input("insert graph title: ")
     print(f"generating graph:{args.grafico}")
-    df_clean.plot(kind='bar', x='categories', y='amount', color='green', title=gname)
+    df_clean.plot(kind='pie', color='green', title=gname)
     plt.gca().get_legend().remove()
     plt.savefig(args.grafico, bbox_inches='tight')
     plt.close()
