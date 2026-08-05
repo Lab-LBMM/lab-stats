@@ -1,0 +1,13 @@
+nome    categoria
+Julia Braga Amaro   g
+Lorena Ferreira da Silva    g
+Fábio Rodrigo de Freitas    pg
+Julia Ferreira Santos   g
+Kauã Henrique da Silva Andrade  v
+Maria Isabelly Da Silva Andrade v
+João Pedro Vieira Rangel    pg
+Eduardo Santos Barbosa Ferreira pg
+Yasmim Silva Souza  pg
+Maria Eduarda Costa Dias de Moraes  g
+Adrian da Silva g
+Paulo Eduardo de Oliveira   pg
