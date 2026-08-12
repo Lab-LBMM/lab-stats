@@ -1,0 +1,15 @@
+Data	Categoria	Periódico	Instituição
+27/10/2025	Transcriptômica	
+19/01/2025	Transcriptômica
+02/02/2026	
+23/03/2026	Transcriptômica
+13/04/2026	Genômica
+27/04/2026	
+11/05/2026	Genômica
+25/05/2026	
+01/07/2026	Transcriptômica
+16/07/2026	Metagenômica
+05/08/2026
+12/08/2026
+26/08/2026
+03/09/2026
