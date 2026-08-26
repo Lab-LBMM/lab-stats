@@ -6,7 +6,7 @@ amount,categories
 1,bolsas FAPESP aprovadas
 0,bolsas CNPq aprovadas
 8,bolsas Auxílios FAPESP disponíveis
-8,bolsas Auxílios FAPESP vigentes
+0,bolsas Auxílios FAPESP vigentes
 0,artigos submetidos
 0,artigos aceitos
 0,artigos negados
