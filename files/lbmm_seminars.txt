@@ -1,0 +1,6 @@
+Categoria	total
+Transcriptômica	5
+Genômica	4
+Proteômica	1
+Metagenômica	1
+Machine learning	1
