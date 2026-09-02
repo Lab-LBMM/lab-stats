@@ -1,13 +1,13 @@
-nome    categoria
-Julia Braga Amaro   g
-Lorena Ferreira da Silva    g
-Fábio Rodrigo de Freitas    pg
-Julia Ferreira Santos   g
-Kauã Henrique da Silva Andrade  v
-Maria Isabelly Da Silva Andrade v
-João Pedro Vieira Rangel    pg
-Eduardo Santos Barbosa Ferreira pg
-Yasmim Silva Souza  pg
-Maria Eduarda Costa Dias de Moraes  g
-Adrian da Silva g
-Paulo Eduardo de Oliveira   pg
+nome,categoria
+Julia Braga Amaro,Graduandos
+Lorena Ferreira da Silva,Graduandos
+Fábio Rodrigo de Freitas,Pos-graduandos
+Julia Ferreira Santos,Graduandos
+Kauã Henrique da Silva Andrade,Voluntarios
+Maria Isabelly Da Silva Andrade,Voluntarios
+João Pedro Vieira Rangel,Pos-graduandos
+Eduardo Santos Barbosa Ferreira,Pos-graduandos
+Yasmim Silva Souza,Pos-graduandos
+Maria Eduarda Costa Dias de Moraes,Graduandos
+Adrian da Silva,Graduandos
+Paulo Eduardo de Oliveira,Pos-graduandos

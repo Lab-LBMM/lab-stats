@@ -31,17 +31,24 @@ parser.add_argument(
 )
 args = parser.parse_args()
 
-df = pd.read_csv(args.input, sep=",")
-
-df_clean = df.dropna()
+df = pd.read_csv(args.input)
 
 if args.grafico:
-    gname = input("insert graph title: ")
-    print(f"generating graph:{args.grafico}")
-    df_clean.plot(kind='bar', x='categories', y='amount', color='green', title=gname)
-    plt.gca().get_legend().remove()
-    plt.savefig(args.grafico, bbox_inches='tight')
-    plt.close()
+    titulo = input("Digite o título do gráfico: ")
+    
+    df_sorted = df.sort_values(by="amount", ascending=True)
 
-# 
-df_clean.to_csv(args.output, sep='\t', index=False)
+    plt.figure(figsize=(10, 6))
+    plt.barh(df_sorted["categories"], df_sorted["amount"], color="skyblue")
+    
+    plt.title(titulo)
+    plt.xlabel("Quantidade")
+    plt.ylabel("Categorias")
+    
+    plt.savefig(args.grafico, bbox_inches="tight")
+    plt.close()
+    print(f"Gráfico salvo em: {args.grafico}")
+
+if args.output:
+    df.to_csv(args.output, sep="\t", index=False)
+    print(f"Arquivo salvo em: {args.output}")
