@@ -3,20 +3,26 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 import argparse
+import re
+
+#regularizar o link para o formato CSV
+
+def converter_link_da_planilha(linkoucaminho):
+    if "docs.google.com/spreadsheets" in linkoucaminho:
+        match = re.search(r"/d/([a-zA-Z0-9-_]+)", linkoucaminho)
+        if match:
+            sheet_id = match.group(1)
+            return f"https://docs.google.com/spreadsheets/d/{sheet_id}/export?format=csv"
+    return linkoucaminho
 
 parser = argparse.ArgumentParser(
-    description=__doc__
+    description="Gera gráfico de barras por trimestre a partir de datas."
 )
 parser.add_argument(
     "-i", "--input",
     type=str,
     required=True,
-    help="Path to the input file",
-)
-parser.add_argument(
-    "--version",
-    action="version",
-    version="%(prog)s 0.1.0",
+    help="link",
 )
 parser.add_argument(
     "-g", "--grafico",
@@ -27,22 +33,35 @@ parser.add_argument(
 
 args = parser.parse_args()
 
-#indicando o arquivo a ser lido
-dados_df = pd.read_table(args.input)
+#dados
+fonte_dados = converter_link_da_planilha(args.input)
+if fonte_dados.startswith("http"):
+    dados_df = pd.read_csv(fonte_dados)
+else:
+    dados_df = pd.read_table(fonte_dados)
 
-#definindo o tamanho do gráfico
-plt.figure(figsize=(10, 8))
+#Data para datetime
+dados_df['Data'] = pd.to_datetime(dados_df['Data'], dayfirst=True)
 
-#ajustando as características gerais
-plt.bar(dados_df['Categoria'], dados_df['total'], color='blue', width= 0.5)
+#trimestres
+dados_df['Trimestre'] = dados_df['Data'].dt.to_period('Q').astype(str)
 
-#configurando as legendas
+#grupo de trimentres
+df_trimestral = dados_df.groupby('Trimestre').size().reset_index(name='total')
+
+plt.figure(figsize=(10, 6))
+plt.bar(df_trimestral['Trimestre'], df_trimestral['total'], color='royalblue', width=0.5)
 plt.rc('xtick', labelsize=12)
 plt.rc('ytick', labelsize=12) 
-plt.xlabel('Categoria', fontsize=14, labelpad=14)
-plt.ylabel('Quantidade de artigo', fontsize=14, labelpad=14)
-plt.title('Seminário Online', fontsize=16)
+plt.xlabel('Trimestre', fontsize=14, labelpad=12)
+plt.ylabel('Quantidade de Artigos', fontsize=14, labelpad=12)
+plt.title('Total de rtigos apresentados por rimestre', fontsize=16, pad=15)
 
+for i, valor in enumerate(df_trimestral['total']):
+    plt.text(i, valor + 0.1, str(valor), ha='center', fontsize=11, fontweight='bold')
+
+plt.tight_layout()
 plt.savefig(args.grafico)
+print("sucesso")
 
-
+"python3 lab-stats/scripts/testeseminar.py -i https://docs.google.com/spreadsheets/d/ ( id da planilha ) /edit?usp=sharing -g lab-stats/files/garficoteste"
