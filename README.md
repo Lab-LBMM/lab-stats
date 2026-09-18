@@ -1,25 +1,26 @@
 # lab-stats
-this script needs a enviroment to run, to create and activate the enviromente, run:
+O repositório Lab-Stats foi criado para a apresentação gráfica de atividades desenvolvidas pelo LBMM (como seminários e minicursos) e da produção científica. A criação de gráficos por si só é uma atividade prática para os iniciantes em programação.
+Todos os scripts desenvolvidos estão presentes no Github.
+
+Para fazer uso dos scripts é necessário o uso de um ambiente python3, que pode ser criado utilizando os seguintes comandos no terminal:
 
 ```
 python3 -m venv .venv
 source .venv/bin/activate
 ```
 
-Running the script:
+Rodando o script:
 
-to run the script you will need an input in a format that pandas can read (ex: .txt, .csv, .xls, .json).
-
-the terminal command will look like this:
+Para utilizar o script é preciso de um arquivo(.tsv, .csv, .txt) ou link de planilha do google sheets que será lido pela biblioteca pandas, um exemplo de arquivo é o lbmm_general.tsv na pasta files. Atualmente utilizamos a planilha pública https://docs.google.com/spreadsheets/d/1cW5kMDnVopYCvaTLuohK-kUd_aveG5gR5KwLWJEx3iI/edit? como fonte de dados remota.
+Os argumentos necessários são -i input, -g graph, caso deseje consultar a versão do script use --version, o comando se parecerá com isso:
 
 ```
-python general_statistics.py -i lab_data.txt -o results.txt -g graph.png
+python3 XXXX_stats.py -i link/arquivo -g gráfico
 ```
 
-"python" = specifies the language to be used.
-"general_statistics.py" = specifies the script that will de used
-"-i lab_data.txt" = the input.
-"-o results.txt" = name of the resulting file(optional).
-"-g graph.png" = sinagnals if a graph is required, his name and his format(optional).
+"python3" = específica a linguagem do programa.
+"XXXX_stats.py" = específica o script a ser usado.
+"-i link/arquivo" = o arquivo ou link de entrada.
+"-g gráfico" = o nome, localização e formato(.png, .pdf) do gráfico a ser gerado.
 
-if you run the entire command with input, output and graph, you will generate two files, one containing the graph and other containing a "cleaned" version of the input.
+O repositório está em constante desenvolvimento, sugestões, críticas e contribuições são sempre bem-vindas.
