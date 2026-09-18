@@ -19,13 +19,7 @@ def converter_link_da_planilha(linkoucaminho):
     return linkoucaminho
 
 parser = argparse.ArgumentParser(
-    description="Gera gráfico de barras por trimestre a partir de datas."
-)
-parser.add_argument(
-    "-i", "--input",
-    type=str,
-    required=True,
-    help="link",
+    description=__doc__
 )
 parser.add_argument(
     "--version",
@@ -33,10 +27,16 @@ parser.add_argument(
     version="%(prog)s 0.1.0",
 )
 parser.add_argument(
-    "-g", "--grafico",
+    "-i", "--input",
     type=str,
     required=True,
-    help="image used to name graph(like: results.png)",
+    help="link ou arquivo de entrada",
+)
+parser.add_argument(
+    "-g", "--graph",
+    type=str,
+    required=True,
+    help="nome e formato do grafico",
 )
 
 args = parser.parse_args()
@@ -48,11 +48,11 @@ if fonte_dados.startswith("http"):
 else:
     dados_df = pd.read_table(fonte_dados)
 
-#Data para datetime
-dados_df['Data'] = pd.to_datetime(dados_df['Data'], dayfirst=True)
+#data para datetime
+dados_df['data'] = pd.to_datetime(dados_df['data'], dayfirst=True)
 
 #trimestres
-dados_df['Trimestre'] = dados_df['Data'].dt.to_period('Q').astype(str)
+dados_df['Trimestre'] = dados_df['data'].dt.to_period('Q').astype(str)
 
 #grupo de trimentres
 df_trimestral = dados_df.groupby('Trimestre').size().reset_index(name='total')
@@ -63,13 +63,14 @@ plt.rc('xtick', labelsize=12)
 plt.rc('ytick', labelsize=12) 
 plt.xlabel('Trimestre', fontsize=14, labelpad=12)
 plt.ylabel('Quantidade de Artigos', fontsize=14, labelpad=12)
-plt.title('Total de rtigos apresentados por rimestre', fontsize=16, pad=15)
+plt.title('Total de artigos apresentados por trimestre', fontsize=16, pad=15)
 
 for i, valor in enumerate(df_trimestral['total']):
     plt.text(i, valor + 0.1, str(valor), ha='center', fontsize=11, fontweight='bold')
 
 plt.tight_layout()
 plt.savefig(args.grafico)
-print("sucesso")
+plt.close()
+print(f"Gráfico salvo em: {args.grafico}")
 
-"python3 lab-stats/scripts/seminars_stata.py -i https://docs.google.com/spreadsheets/d/ ( id da planilha ) /edit?usp=sharing -g lab-stats/files/grafico"
+"python3 lab-stats/scripts/seminars_stats.py -i https://docs.google.com/spreadsheets/d/ ( id da planilha ) /edit?usp=sharing -g lab-stats/files/graficotestealfaseminars"

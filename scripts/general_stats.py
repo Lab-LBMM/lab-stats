@@ -20,21 +20,21 @@ parser = argparse.ArgumentParser(
     description=__doc__
 )
 parser.add_argument(
-    "-i", "--input",
-    type=str,
-    required=True,
-    help="Path to the input file",
-)
-parser.add_argument(
     "--version",
     action="version",
     version="%(prog)s 0.1.0",
 )
 parser.add_argument(
-    "-g", "--grafico",
+    "-i", "--input",
+    type=str,
+    required=True,
+    help="link ou arquivo de entrada",
+)
+parser.add_argument(
+    "-g", "--graph",
     type=str,
     required=False,
-    help="image used to name graph(like: results.png)",
+    help="nome e formato do grafico",
 )
 args = parser.parse_args()
 
@@ -44,19 +44,19 @@ if fonte_dados.startswith("http"):
 else:
     dados_df = pd.read_table(fonte_dados)
 
-if args.grafico:
-    titulo = input("Digite o título do gráfico: ")
+titulo = "Estatísticas gerais LBMM"
     
-    df_sorted = dados_df.sort_values(by="amount", ascending=True)
+df_sorted = dados_df.sort_values(by="quantidade", ascending=True)
 
-    plt.figure(figsize=(10, 6))
-    plt.barh(df_sorted["categoria"], df_sorted["amount"], color="skyblue")
+plt.figure(figsize=(10, 6))
+plt.barh(df_sorted["categoria"], df_sorted["quantidade"], color="skyblue")
     
-    plt.title(titulo)
-    plt.xlabel("amount")
-    plt.ylabel("categorias")
+plt.title(titulo)
+plt.xlabel("quantidade")
+plt.ylabel("categorias")
     
-    plt.savefig(args.grafico, bbox_inches="tight")
-    plt.close()
-    print(f"Gráfico salvo em: {args.grafico}")
+plt.savefig(args.grafico, bbox_inches="tight")
+plt.close()
+print(f"Gráfico salvo em: {args.grafico}")
 
+"python3 lab-stats/scripts/general_stats.py -i https://docs.google.com/spreadsheets/d/ ( id da planilha ) /edit?usp=sharing -g lab-stats/files/graficotestealfageneral"

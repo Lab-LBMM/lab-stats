@@ -20,21 +20,21 @@ parser = argparse.ArgumentParser(
     description=__doc__
 )
 parser.add_argument(
-    "-i", "--input",
-    type=str,
-    required=True,
-    help="Path to the input file",
-)
-parser.add_argument(
     "--version",
     action="version",
     version="%(prog)s 0.1.0",
 )
 parser.add_argument(
-    "-g", "--grafico",
+    "-i", "--input",
+    type=str,
+    required=True,
+    help="link ou arquivo de entrada",
+)
+parser.add_argument(
+    "-g", "--graph",
     type=str,
     required=False,
-    help="image used to name graph(like: results.png)",
+    help="nome e formato do grafico",
 )
 args = parser.parse_args()
 
@@ -46,18 +46,18 @@ else:
 
 print(dados_df.head)
 
-if args.grafico:
-    titulo = input("Digite o título do gráfico: ")
-    
-    dados_df['categoria'].value_counts().plot(
-        kind="pie", 
-        autopct="%1.1f%%", 
-        title=titulo,
-        fontsize=14
-    )
-    plt.ylabel("")
-    plt.savefig(args.grafico, bbox_inches="tight")
-    plt.close()
-    print(f"Gráfico salvo em: {args.grafico}")
 
-"python3 lab-stats/scripts/people_stats.py -i https://docs.google.com/spreadsheets/d/1cW5kMDnVopYCvaTLuohK-kUd_aveG5gR5KwLWJEx3iI/edit?gid=0#gid=0 -g lab-stats/files/graficotestealfapeople"
+titulo = "Pessoas LBMM"
+    
+dados_df['categoria'].value_counts().plot(
+    kind="pie", 
+    autopct="%1.1f%%", 
+    title=titulo,
+    fontsize=14
+)
+plt.ylabel("")
+plt.savefig(args.grafico, bbox_inches="tight")
+plt.close()
+print(f"Gráfico salvo em: {args.grafico}")
+
+"python3 lab-stats/scripts/people_stats.py -i https://docs.google.com/spreadsheets/d/ ( id da planilha ) /edit?usp=sharing -g lab-stats/files/graficotestealfapeople"
