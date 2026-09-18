@@ -8,11 +8,14 @@ import re
 #regularizar o link para o formato CSV
 
 def converter_link_da_planilha(linkoucaminho):
+
+    guia = "0"
+
     if "docs.google.com/spreadsheets" in linkoucaminho:
         match = re.search(r"/d/([a-zA-Z0-9-_]+)", linkoucaminho)
         if match:
             sheet_id = match.group(1)
-            return f"https://docs.google.com/spreadsheets/d/{sheet_id}/export?format=csv"
+            return f"https://docs.google.com/spreadsheets/d/{sheet_id}/export?format=csv&gid={guia}"
     return linkoucaminho
 
 parser = argparse.ArgumentParser(
@@ -23,6 +26,11 @@ parser.add_argument(
     type=str,
     required=True,
     help="link",
+)
+parser.add_argument(
+    "--version",
+    action="version",
+    version="%(prog)s 0.1.0",
 )
 parser.add_argument(
     "-g", "--grafico",
@@ -64,4 +72,4 @@ plt.tight_layout()
 plt.savefig(args.grafico)
 print("sucesso")
 
-"python3 lab-stats/scripts/testeseminar.py -i https://docs.google.com/spreadsheets/d/ ( id da planilha ) /edit?usp=sharing -g lab-stats/files/garficoteste"
+"python3 lab-stats/scripts/seminars_stata.py -i https://docs.google.com/spreadsheets/d/ ( id da planilha ) /edit?usp=sharing -g lab-stats/files/grafico"
