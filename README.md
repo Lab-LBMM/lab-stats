@@ -1,25 +1,19 @@
 # lab-stats
-this script needs a enviroment to run, to create and activate the enviromente, run:
+
+O repositório Lab-Stats foi criado para a apresentação gráfica de atividades desenvolvidas pelo LBMM (como seminários e minicursos) e da produção científica. A criação de gráficos por si só é uma atividade prática para os iniciantes em programação.
+
+Todos os scripts desenvolvidos estão presentes no Github.
+
+Para fazer uso dos scripts é necessário o uso de um ambiente python3, que pode ser criado utilizando os seguintes comandos no terminal:
 
 ```
 python3 -m venv .venv
 source .venv/bin/activate
 ```
 
-Running the script:
+# Documentação de scripts
 
-to run the script you will need an input in a format that pandas can read (ex: .txt, .csv, .xls, .json).
+Toda a documentação dos códigos no repositório estão na [wiki](https://github.com/Lab-LBMM/lab-stats/wiki)
 
-the terminal command will look like this:
+O repositório está em constante desenvolvimento, sugestões, críticas e contribuições são sempre bem-vindas.
 
-```
-python general_statistics.py -i lab_data.txt -o results.txt -g graph.png
-```
-
-"python" = specifies the language to be used.
-"general_statistics.py" = specifies the script that will de used
-"-i lab_data.txt" = the input.
-"-o results.txt" = name of the resulting file(optional).
-"-g graph.png" = sinagnals if a graph is required, his name and his format(optional).
-
-if you run the entire command with input, output and graph, you will generate two files, one containing the graph and other containing a "cleaned" version of the input.
