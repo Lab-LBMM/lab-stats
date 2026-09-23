@@ -1,4 +1,4 @@
-# lab-stats
+# Estatísticas do LBMM (Lab Stats)
 
 O repositório Lab-Stats foi criado para a apresentação gráfica de atividades desenvolvidas pelo LBMM (como seminários e minicursos) e da produção científica. A criação de gráficos por si só é uma atividade prática para os iniciantes em programação.
 
